@@ -54,7 +54,7 @@ def get_in_page(driver, config):
     """
     登录并进入出入校申请
     """
-    driver.get('https://portal.pku.edu.cn/')
+    driver.get('https://portal.pku.edu.cn/portal2017/login.jsp')
     time.sleep(3)
 
     # 门户
@@ -151,80 +151,80 @@ def write_info(driver, config):
     # 起点/终点所在省
     # 不支持修改
     # 点击下拉
-    xpath = '/html/body/div[1]/section/div/div/div[2]/main/div/div[2]/form/div/div[10]/div[2]/div/div/div/div/input'
-    driver.find_element_by_xpath(xpath).click()
-    time.sleep(0.5)
-    # 点击选择
-    driver.find_element_by_xpath(f'//li/span[contains(string(), "北京市")]').click()
-    time.sleep(0.5)
+    # xpath = '/html/body/div[1]/section/div/div/div[2]/main/div/div[2]/form/div/div[10]/div[2]/div/div/div/div/input'
+    # driver.find_element_by_xpath(xpath).click()
+    # time.sleep(0.5)
+    # # 点击选择
+    # driver.find_element_by_xpath(f'//li/span[contains(string(), "北京市")]').click()
+    # time.sleep(0.5)
 
-    # 起点所在地级市
-    # 不支持修改
-    # 点击下拉
-    xpath = '/html/body/div[1]/section/div/div/div[2]/main/div/div[2]/form/div/div[10]/div[3]/div/div/div/div[1]/input'
-    driver.find_element_by_xpath(xpath).click()
-    time.sleep(0.5)
-    # 点击选择
-    xpath = f'//li/span[contains(string(), "市辖区")]'
-    click_by_xpath(driver, xpath)
-    time.sleep(0.5)
+    # # 起点所在地级市
+    # # 不支持修改
+    # # 点击下拉
+    # xpath = '/html/body/div[1]/section/div/div/div[2]/main/div/div[2]/form/div/div[10]/div[3]/div/div/div/div[1]/input'
+    # driver.find_element_by_xpath(xpath).click()
+    # time.sleep(0.5)
+    # # 点击选择
+    # xpath = f'//li/span[contains(string(), "市辖区")]'
+    # click_by_xpath(driver, xpath)
+    # time.sleep(0.5)
 
     # 起点/终点所在区县
     # 点击下拉
-    xpath = '/html/body/div[1]/section/div/div/div[2]/main/div/div[2]/form/div/div[10]/div[4]/div/div/div/div/input'
-    driver.find_element_by_xpath(xpath).click()
-    time.sleep(0.5)
-    # 点击选择
-    xpath = f'//li/span[contains(string(), "{config["起点/终点所在区县"]}")]'
-    click_by_xpath(driver, xpath)
-    time.sleep(0.5)
+    # xpath = '/html/body/div[1]/section/div/div/div[2]/main/div/div[2]/form/div/div[10]/div[4]/div/div/div/div/input'
+    # driver.find_element_by_xpath(xpath).click()
+    # time.sleep(0.5)
+    # # 点击选择
+    # xpath = f'//li/span[contains(string(), "{config["起点/终点所在区县"]}")]'
+    # click_by_xpath(driver, xpath)
+    # time.sleep(0.5)
 
     # 起点/终点所在街道
-    xpath = '/html/body/div[1]/section/div/div/div[2]/main/div/div[2]/form/div/div[10]/div[5]/div/div/div/input'
-    driver.find_element_by_xpath(xpath).clear()
-    driver.find_element_by_xpath(xpath).send_keys(config["起点/终点所在街道"])
+    # xpath = '/html/body/div[1]/section/div/div/div[2]/main/div/div[2]/form/div/div[10]/div[5]/div/div/div/input'
+    # driver.find_element_by_xpath(xpath).clear()
+    # driver.find_element_by_xpath(xpath).send_keys(config["起点/终点所在街道"])
 
     # 基本轨迹
-    xpath = '/html/body/div[1]/section/div/div/div[2]/main/div/div[2]/form/div/div[11]/div/div/div[1]/textarea'
+    xpath = '/html/body/div[1]/section/div/div/div[2]/main/div[1]/div[2]/form/div/div[10]/div/div/div/textarea'
     remove_readonly_by_xpath(driver, xpath)
     driver.find_element_by_xpath(xpath).clear()
     driver.find_element_by_xpath(xpath).send_keys(config["基本轨迹"])
 
     # 补充说明
-    xpath = '/html/body/div[1]/section/div/div/div[2]/main/div/div[2]/form/div/div[12]/div/div/div/textarea'
+    xpath = '/html/body/div[1]/section/div/div/div[2]/main/div[1]/div[2]/form/div/div[11]/div/div/div/textarea'
     remove_readonly_by_xpath(driver, xpath)
     driver.find_element_by_xpath(xpath).clear()
     driver.find_element_by_xpath(xpath).send_keys(config["补充说明"])
 
     # 证明材料上传
-    if config["程序暂停"] == "是":
-        driver.find_element_by_xpath('/html/body/div[1]/section/div/div/div[2]/main/div/div[2]/form/div/div[13]/div/div/div/div[1]/div/button[3]').click()
+    # if config["程序暂停"] == "是":
+    #     driver.find_element_by_xpath('/html/body/div[1]/section/div/div/div[2]/main/div[1]/div[2]/form/div/div[12]/div/div/div/div[1]/div/button[3]').click()
 
     # 证明材料上传路径 -- 手动
 
     # 邮箱
-    xpath = '/html/body/div[1]/section/div/div/div[2]/main/div[1]/div[2]/form/div/div[14]/div/div/div/input'
+    xpath = '/html/body/div[1]/section/div/div/div[2]/main/div[1]/div[2]/form/div/div[13]/div/div/div/input'
     remove_readonly_by_xpath(driver, xpath)
     driver.find_element_by_xpath(xpath).clear()
     driver.find_element_by_xpath(xpath).send_keys(config["邮箱"])
 
     # 手机号
-    xpath = '/html/body/div[1]/section/div/div/div[2]/main/div[1]/div[2]/form/div/div[15]/div/div/div/input'
+    xpath = '/html/body/div[1]/section/div/div/div[2]/main/div[1]/div[2]/form/div/div[14]/div/div/div/input'
     remove_readonly_by_xpath(driver, xpath)
     driver.find_element_by_xpath(xpath).clear()
     driver.find_element_by_xpath(xpath).send_keys(config["手机号"])
 
     # 勾选已读 已经保存则不能勾选
     if not config["history"]:
-        driver.find_element_by_xpath('/html/body/div[1]/section/div/div/div[2]/main/div/div[2]/form/div/div[16]/div/div/label/span[2]').click()
+        driver.find_element_by_xpath('/html/body/div[1]/section/div/div/div[2]/main/div[1]/div[2]/form/div/div[15]/div/div/label/span[2]').click()
         time.sleep(0.5)
 
-    if config["程序暂停"] == "是":
-        _input = input("\n上传附件后，输入go继续；输入exit结束程序\n")
-        while True:
-            if _input.lower() == "go": break
-            elif _input.lower() == "exit": exit()
-            else: print("输入错误")
+    # if config["程序暂停"] == "是":
+    #     _input = input("\n上传附件后，输入go继续；输入exit结束程序\n")
+    #     while True:
+    #         if _input.lower() == "go": break
+    #         elif _input.lower() == "exit": exit()
+    #         else: print("输入错误")
 
     # 点击保存
     driver.find_element_by_xpath('//button[contains(string(), "保存")]').click()
