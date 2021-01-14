@@ -243,6 +243,7 @@ def submit(driver, config):
     """
     if config["提交"] == "是" and config["程序暂停"] == "是":
         driver.find_element_by_xpath('//button[contains(string(), "提交")]').click()
+        driver.find_element_by_xpath('//button[contains(string(), "确定")]').click()
 
 def get_in_history(driver):
     driver.get("https://simso.pku.edu.cn/pages/sadEpiAccessApply.html#/viewEpiApplyHis")
