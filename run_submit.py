@@ -359,9 +359,9 @@ if __name__ == "__main__":
         config_check(config)
         get_in_page(driver, config)
         write_info(driver, config)
-        # submit(driver, config)
-        # get_in_history(driver)
-        # save_screen_shot(driver)
-        # logout(driver)
-        # if config["微信通知key"]:
-        #     wechat_notification(userName = config["学号"], sckey = config["微信通知key"])
+        submit(driver, config)
+        get_in_history(driver)
+        save_screen_shot(driver)
+        logout(driver)
+        if config["微信通知key"]:
+            wechat_notification(userName = config["学号"], sckey = config["微信通知key"])
